@@ -20,3 +20,15 @@ p {
 .button-primary {
   @apply  rounded-lg border border-primary w-full px-4 py-2 hover:bg-primary transition ease-in-out duration-100 text-primary hover:text-white hover:border-white font-mochy;
 }
+
+.card-grid {
+  @apply grid grid-cols-4 md:grid-cols-6 gap-5 px-5
+}
+
+.card {
+  @apply relative bg-blue-600
+}
+
+.card img{
+  @apply w-32 h-28 md:w-52 md:h-56 block object-right-bottom rounded-md my-1 bg-violet-700
+}

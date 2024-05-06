@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../assets/img/logos3.svg'
+import logo from '/img/logos3.svg'
 import { Link } from 'react-router-dom'
 
 const Home = () => {
