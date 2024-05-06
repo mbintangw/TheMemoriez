@@ -7,11 +7,12 @@ const Home = () => {
     <main className='flex flex-col'>
       <div className='flex flex-col items-center justify-center flex-1 gap-3'>
         <img src={logo} alt="logo" className='w-52 md:w-64 pb-5 md:pb-9 '/>
-        <button
-            className='button-primary'
+          <Link
+            to={`/PlayGames`}
+            className='button-primary text-center'
           >
             PLAY GAME
-          </button>
+          </Link>
           <button
             className='button-primary'
           >
