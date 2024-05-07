@@ -26,9 +26,9 @@ p {
 }
 
 .card {
-  @apply relative bg-blue-600
+  @apply relative 
 }
 
 .card img{
-  @apply w-32 h-28 md:w-52 md:h-56 block object-right-bottom rounded-md my-1 bg-violet-700
+  @apply w-32 h-28 md:w-52 md:h-56 block object-right-bottom rounded-md
 }
