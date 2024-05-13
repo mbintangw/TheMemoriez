@@ -9,7 +9,7 @@
   </rect>
 </g>
 <g transform="translate(27.166666666666664,72.83333333333333)">
-  <rect fill="#190411" height="37" width="37" y="-18.5" x="-18.5">
+  <rect fill="#a41e71" height="37" width="37" y="-18.5" x="-18.5">
     <animateTransform begin="0s" values="1.2200000000000002;1" keyTimes="0;1" dur="0.8620689655172413s" repeatCount="indefinite" type="scale" attributeName="transform"></animateTransform>
   </rect>
 </g>

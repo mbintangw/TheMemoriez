@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Cards from '../components/Cards'
 import Winner from '../components/Winner'
+import loading from '../assets/loading.svg'
 
 const cardImages = [
   {"image": "img/vintage.jpg", matched : false},
@@ -19,6 +20,7 @@ const PlayGames = () => {
   const [pickSecond, setpickSecond] = useState(null)
   const [selectedCard, setselectedCard] = useState (null)
   const [showWin, setshowWin] = useState(false)
+  const [loadingImg, setloadingImg] = useState(true)
 
   const shuffleCards = () => {
     const shuffleCards = [...cardImages, ...cardImages]
@@ -73,8 +75,12 @@ const PlayGames = () => {
   }, [cards])
 
   useEffect(() => {
-    shuffleCards()
+    const initializeGame = () => {
+      shuffleCards()
+      setloadingImg(false)
+    }
     setshowWin(false)
+    initializeGame()
   }, [])
 
   const handleRestart = () => {
@@ -85,16 +91,18 @@ const PlayGames = () => {
   return (
       <div className='flex flex-col items-center justify-center gap-5'>
         <h1>Turns : {turns}</h1>
-        <div className='card-grid'>
-          {cards.map ((card) => (
-            <Cards 
-              key={card.id} 
-              card={card} 
-              handleChoice={handleChoice}
-              selectedCard={selectedCard}
-              />
-          ))}
-        </div>
+        {loadingImg ? (<img src={loading} alt="loading"/>) : (
+          <div className='card-grid'>
+            {cards.map ((card) => (
+              <Cards 
+                key={card.id} 
+                card={card} 
+                handleChoice={handleChoice}
+                selectedCard={selectedCard}
+                />
+            ))}
+          </div>
+        )}
         <Link to={`/`} className='button-primary text-center mt-10 !w-1/2'>Home</Link>
         <button onClick={handleRestart} className='button-primary !w-1/2'>Restart</button>
         <Winner showWin={showWin} turns={turns} handleRestart={handleRestart}/>
