@@ -18,7 +18,7 @@ const PlayGames = () => {
   const [pickFirst, setpickFirst] = useState(null)
   const [pickSecond, setpickSecond] = useState(null)
   const [selectedCard, setselectedCard] = useState (null)
-  const [win, setwin] = useState(false)
+  const [showWin, setshowWin] = useState(false)
 
   const shuffleCards = () => {
     const shuffleCards = [...cardImages, ...cardImages]
@@ -67,19 +67,20 @@ const PlayGames = () => {
   }
 
   useEffect(() => {
+    if (cards.every(card => card.matched)) {
+      setshowWin(true)
+    }
+  }, [cards])
+
+  useEffect(() => {
     shuffleCards()
+    setshowWin(false)
   }, [])
 
   const handleRestart = () => {
     shuffleCards()
-    setwin(false)
+    setshowWin(false)
   }
-
-  useEffect(() => {
-    if (cards.every(card => card.matched)) {
-      setwin(true)
-    }
-  }, [cards])
 
   return (
       <div className='flex flex-col items-center justify-center gap-5'>
@@ -96,7 +97,7 @@ const PlayGames = () => {
         </div>
         <Link to={`/`} className='button-primary text-center mt-10 !w-1/2'>Home</Link>
         <button onClick={handleRestart} className='button-primary !w-1/2'>Restart</button>
-        <Winner win={win} turns={turns} handleRestart={handleRestart}/>
+        <Winner showWin={showWin} turns={turns} handleRestart={handleRestart}/>
       </div>
    
   )

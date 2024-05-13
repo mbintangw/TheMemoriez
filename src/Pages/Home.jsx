@@ -13,11 +13,6 @@ const Home = () => {
           >
             PLAY GAME
           </Link>
-          <button
-            className='button-primary'
-          >
-            SETTINGS
-          </button>
       </div>
     </main>
   )
