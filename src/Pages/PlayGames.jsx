@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import Cards from '../components/Cards'
+import Winner from '../components/Winner'
 
 const cardImages = [
   {"image": "img/vintage.jpg", matched : false},
@@ -17,6 +18,7 @@ const PlayGames = () => {
   const [pickFirst, setpickFirst] = useState(null)
   const [pickSecond, setpickSecond] = useState(null)
   const [selectedCard, setselectedCard] = useState (null)
+  const [win, setwin] = useState(false)
 
   const shuffleCards = () => {
     const shuffleCards = [...cardImages, ...cardImages]
@@ -69,8 +71,15 @@ const PlayGames = () => {
   }, [])
 
   const handleRestart = () => {
-    shuffleCards();
+    shuffleCards()
+    setwin(false)
   }
+
+  useEffect(() => {
+    if (cards.every(card => card.matched)) {
+      setwin(true)
+    }
+  }, [cards])
 
   return (
       <div className='flex flex-col items-center justify-center gap-5'>
@@ -87,6 +96,7 @@ const PlayGames = () => {
         </div>
         <Link to={`/`} className='button-primary text-center mt-10 !w-1/2'>Home</Link>
         <button onClick={handleRestart} className='button-primary !w-1/2'>Restart</button>
+        <Winner win={win} turns={turns} handleRestart={handleRestart}/>
       </div>
    
   )
