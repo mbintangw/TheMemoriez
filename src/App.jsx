@@ -1,13 +1,10 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import Header from './components/Header.jsx';
 import Home from './Pages/Home.jsx';
 import MainLayout from './Layout/MainLayout.jsx';
 import PlayGames from './Pages/PlayGames.jsx';
 
 function App() {
-
   return (
     <BrowserRouter>
       <Routes>
